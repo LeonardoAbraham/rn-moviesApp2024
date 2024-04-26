@@ -3,6 +3,8 @@ import { View, Text } from 'react-native';
 import { RootStackParams } from '../../navigation/Navigation';
 import { useMovie } from '../../hooks/useMovie';
 import { MovieHeader } from '../../components/movie/MovieHeader';
+import { MovieDetails } from '../../components/movie/MovieDetails';
+import { ScrollView } from 'react-native-gesture-handler';
 //import { useRoute } from '@react-navigation/native';
 
 interface Props extends StackScreenProps<RootStackParams, 'Details'> {}
@@ -18,7 +20,7 @@ export const DetailsScreen = ({ route }: Props) => {
     }
 
     return (
-        <View>
+        <ScrollView>
             {/* Header */}
             <MovieHeader
                 originalTitle={movie?.originalTitle ?? ''}
@@ -27,6 +29,8 @@ export const DetailsScreen = ({ route }: Props) => {
             />
 
             {/* Details */}
-        </View>
+            {/* eslint-disable-next-line prettier/prettier */}
+            <MovieDetails movie={movie!} />
+        </ScrollView>
     );
 };
